@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: pureplate
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:h2:file:classpath:/data/localdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console.enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
+  liquibase:
+    contexts: local
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+# Spring Actuator
+management:
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true

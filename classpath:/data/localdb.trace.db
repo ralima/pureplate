@@ -1,0 +1,6 @@
+2023-08-16 20:07:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOG" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOG [42104-214]
+2023-08-16 20:07:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EVENT_PUBLICATION" not found (this database is empty); SQL statement:
+select j1_0.id,j1_0.completion_date,j1_0.event_type,j1_0.listener_id,j1_0.publication_date,j1_0.serialized_event from event_publication j1_0 where j1_0.completion_date is null order by j1_0.publication_date [42104-214]
