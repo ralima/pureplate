@@ -6,6 +6,7 @@ import com.pureplate.exception.FoodProductNotFoundException;
 import com.pureplate.repository.FoodProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +21,18 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/food-products")
+@RequestMapping("/food-products")
 public class FoodProductController {
 
   @Autowired
   private FoodProductRepository foodProductRepository;
+
+
+  @GetMapping("/")
+  public String index(Model model) {
+    model.addAttribute("greeting", "Welcome to our dynamic website!");
+    return "index";
+  }
 
   @GetMapping
   public Iterable findAll() {
