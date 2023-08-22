@@ -32,3 +32,11 @@ build/
 ### Logs ###
 logs
 *.log
+
+### H2 data ###
+/data
+/data/
+/data/**
+/classpath:
+/classpath:/
+/classpath:/**
