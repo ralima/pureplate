@@ -1,4 +1,8 @@
 spring:
+  liquibase:
+    enabled: true
+    contexts: local
+    change-log: classpath:/db/changelog/db.changelog-master.xml
   application:
     name: pureplate
   profiles:
@@ -12,12 +16,18 @@ spring:
     console.enabled: true
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    database: H2
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
 
-
-  liquibase:
-    contexts: local
-    enabled: true
-    change-log: classpath:/db/changelog/db.changelog-master.xml
 # Spring Actuator
 management:
   endpoint:
