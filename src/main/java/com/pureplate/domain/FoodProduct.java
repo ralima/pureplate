@@ -6,6 +6,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.ToString;
 
@@ -18,7 +19,9 @@ import java.util.Set;
 @ToString
 public class FoodProduct extends GenericEntity {
 
+  @NotBlank(message = "Name is mandatory")
   private String name;
+  @NotBlank(message = "Description is mandatory")
   private String description;
 
   @ManyToMany

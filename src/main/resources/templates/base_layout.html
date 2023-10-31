@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Pure plate - Admin Dashboard</title>
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+
+  <!-- Custom Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!--*******************
+    Preloader start
+********************-->
+<div id="preloader">
+  <div class="loader">
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+    </svg>
+  </div>
+</div>
+<!--*******************
+    Preloader end
+********************-->
+
+
+<!--**********************************
+    Main wrapper start
+***********************************-->
+<div id="main-wrapper">
+
+  <!-- header fragment insert  -->
+  <div th:insert="fragments/header :: header"></div>
+
+  <!-- sidebar fragment insert  -->
+  <div th:insert="fragments/sidebar :: sidebar"></div>
+
+
+  <!-- Content body start-->
+
+  <div class="content-body">
+    <div layout:fragment="content"></div>
+
+  </div>
+  <!-- Content body end-->
+
+  <div th:insert="fragments/footer :: footer"></div>
+
+</div>
+    <!--Main wrapper end-->
+
+<!-- Scripts-->
+
+<script src="/plugins/common/common.min.js"></script>
+<script src="/js/custom.min.js"></script>
+<script src="/js/settings.js"></script>
+<script src="/js/gleek.js"></script>
+<script src="/js/styleSwitcher.js"></script>
+
+<!-- Circle progress -->
+<script src="/plugins/circle-progress/circle-progress.min.js"></script>
+
+</body>
+
+</html>
