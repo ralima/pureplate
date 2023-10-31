@@ -32,7 +32,7 @@ public class FoodProductController {
   }
 
   @GetMapping("/title/{name}")
-  public List findByTitle(@PathVariable String name) {
+  public List findByName(@PathVariable String name) {
     return foodProductRepository.findByName(name);
   }
 
