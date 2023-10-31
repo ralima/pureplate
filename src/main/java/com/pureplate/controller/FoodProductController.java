@@ -56,7 +56,8 @@ public class FoodProductController {
   }
 
   @PutMapping("/{id}")
-  public FoodProduct updateBook(@RequestBody FoodProduct foodProduct, @PathVariable UUID id) {
+  public FoodProduct updateFoodProduct(@RequestBody FoodProduct foodProduct,
+                                       @PathVariable UUID id) {
     if (foodProduct.getPublicId() != id) {
       throw new FoodProductIdMismatchException();
     }
