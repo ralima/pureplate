@@ -49,7 +49,7 @@ public class IngredientController {
   }
 
   @PutMapping("/{id}")
-  public Ingredient updateFoodProduct(@RequestBody Ingredient ingredient,
+  public Ingredient updateIngredient(@RequestBody Ingredient ingredient,
                                        @PathVariable UUID id) {
     if (ingredient.getPublicId() != id) {
       throw new FoodProductIdMismatchException();
