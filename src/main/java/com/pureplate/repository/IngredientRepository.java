@@ -9,4 +9,11 @@ import java.util.UUID;
 
 public interface IngredientRepository extends CrudRepository<Ingredient, UUID> {
   List<Ingredient> findByName(String title);
+
+//  Iterable<Ingredient> findAll);
+//
+//  Ingredient findById(UUID id);
+//  Ingredient save(Ingredient ingredient);
+//
+//  void deleteById(UUID id);
 }
