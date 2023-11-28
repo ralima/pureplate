@@ -1,22 +1,49 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
   <changeSet author="Rafael Lima" id="3::relate-food-products-and-ingredients">
-
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <foreignKeyConstraintExists
+          foreignKeyName="food_products_ingredients_ingredient_fk"/>
+      </not>
+      <not>
+        <foreignKeyConstraintExists
+          foreignKeyName="food_products_ingredients_product_fk"/>
+      </not>
+    </preConditions>
     <createTable tableName="food_products_ingredients">
       <column name="public_id" type="UUID">
         <constraints nullable="false" primaryKey="true" primaryKeyName="food_products_ingredients_pkey"/>
       </column>
       <column name="food_product_id" type="UUID">
-        <constraints references="food_products(public_id)"/>
       </column>
       <column name="ingredient_id" type="UUID">
-        <constraints references="ingredients(public_id)"/>
       </column>
     </createTable>
 
     <addUniqueConstraint columnNames="food_product_id, ingredient_id"
                          constraintName="unique_food_product_ingredient"
                          tableName="food_products_ingredients"/>
+    <addForeignKeyConstraint
+      constraintName="food_products_ingredients_ingredient_fk"
+      baseTableName="food_products_ingredients"
+      baseColumnNames="ingredient_id"
+      referencedTableName="ingredients"
+      referencedColumnNames="public_id"
+      validate="true"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"
+    />
+    <addForeignKeyConstraint
+      constraintName="food_products_ingredients_product_fk"
+      baseTableName="food_products_ingredients"
+      baseColumnNames="food_product_id"
+      referencedTableName="food_products"
+      referencedColumnNames="public_id"
+      validate="true"
+      onDelete="NO ACTION"
+      onUpdate="NO ACTION"
+    />
   </changeSet>
 
 </databaseChangeLog>

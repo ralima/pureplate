@@ -5,11 +5,11 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum Unit {
-  GRAMS("Grams"),
-  ML("Milliliters"),
-  PPM("Ppm"),
-  PERCENTAGE("Percentage");
+public enum IngredientType {
+  COSMETIC("Cosmetic"),
+  INDUSTRIALIZED("Industrialized"),
+  MINIMALLY("Minimally Processed"),
+  NATURAL("Natural");
 
   private final String value;
 

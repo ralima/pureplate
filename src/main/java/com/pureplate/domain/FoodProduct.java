@@ -1,7 +1,11 @@
 package com.pureplate.domain;
 
+import com.pureplate.domain.enums.FoodClassification;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -24,9 +28,13 @@ public class FoodProduct extends GenericEntity {
   @NotBlank(message = "Description is mandatory")
   private String description;
 
-  @ManyToMany
+  @ManyToMany(cascade = {CascadeType.REFRESH})
   @JoinTable(name = "food_products_ingredients",
     joinColumns = @JoinColumn(name = "food_product_id"),
     inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-  private Set<Ingredient> Ingredients;
+  private Set<Ingredient> ingredients;
+
+  @Enumerated(EnumType.STRING)
+  private FoodClassification score;
+  private String scoreReason;
 }
